@@ -16,7 +16,7 @@ const InputBox = () => {
   };
   const [newTodo, setNewTodo] = useState("");
     // console.log(newTodo)
-  console.log(todos);
+//   console.log(todos);
 
   return (
     <div>

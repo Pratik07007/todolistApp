@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TodoContext } from "./TodoContext";
 
 const TodoContextProvider = ({ children }) => {
-  const [todos, setTodos] = useState([
-    //     {
-    //     id:1,
-    //     todo:"Learn DSA",
-    //     isCompleted:false
-    // }
-  ]);
+  const [todos, setTodos] = useState(
+    () => JSON.parse(localStorage.getItem("todos")) || []
+  );
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
   return (
     <TodoContext.Provider value={{ todos, setTodos }}>
       {children}
