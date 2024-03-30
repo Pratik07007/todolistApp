@@ -6,19 +6,25 @@ import { TodoContext } from "../contexts/TodoContext";
 const ToDoList = ({ todos }) => {
   const { setTodos } = useContext(TodoContext);
   //   console.log(todos);
-  const [completed, setCompleted] = useState(false);
-  const changeStatusInState = (e) => {
-    setCompleted(e.target.checked);
-    setTodos((prev) => [...prev]);
+//   const [completed, setCompleted] = useState(false);
+//   const changeStatusInState = (e) => {
+//     setCompleted(e.target.checked);
+//     setTodos((prev) =>
+//       prev.map((items) =>
+//         items.id === todos.id
+//           ? { items, isCompleted: !items.isCompleted }
+//           : items
+//       )
+//     );
+//   };
+  const deleteTodo = (id) => {
+    setTodos((prev) => prev.filter((items) => items.id !== todos.id));
   };
-  const deleteTodo=(id)=>{
-    setTodos((prev)=>prev.filter((items)=>items.id!==todos.id))
-  }
   return (
     <div className="h-16 w-96 bg-violet-300 rounded-3xl flex items-center justify-between px-4 ">
       <input
-        checked={completed}
-        onChange={changeStatusInState}
+        // checked={completed}
+        // onChange={changeStatusInState}
         type="checkbox"
       />
       <h1 className={todos.isCompleted ? "line-through" : "none"}>
